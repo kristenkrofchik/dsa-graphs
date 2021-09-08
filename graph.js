@@ -35,7 +35,15 @@ class Graph {
   }
 
   // this function accepts a vertex and removes it from the nodes property, it also updates any adjacency lists that include that vertex
-  removeVertex(vertex) {}
+  removeVertex(vertex) {
+    this.nodes.delete(vertex);
+
+    for(let node of this.nodes) {
+      if(node.adjacent === vertex) {
+        this.removeEdge(node, vertex)
+      }
+    }
+  }
 
   // this function returns an array of Node values using DFS
   depthFirstSearch(start) {}
